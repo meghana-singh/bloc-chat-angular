@@ -17,6 +17,12 @@
           });
       };
 
+      //ChatRooms.getRoomName = function (roomId) {
+      //  rooms.orderByChild(key).equalTo(roomId).once('value').then(function (snapshot){   
+      //      return snapshot.val().roomName;
+      //  });
+      //};
+      
       var animationsEnabled = true;
 
       ChatRooms.open = function (size, parentSelector) {

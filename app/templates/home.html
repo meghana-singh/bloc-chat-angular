@@ -3,8 +3,23 @@
     <h2>Bloc Chat <button type="button" class="btn" ng-click="home.chatRooms.open()">New Room</button></h2>
     
     <ul ng-repeat="room in home.chatRooms.all">
-        <li class="room-list">{{room.roomName}}</li>
+<!--        <li class="room-list" ng-click="home.getByRoomId(room.$id)">{{room.roomName}}</li>-->
+            <li class="room-list" ng-click="home.getChatContents(room.$id)">{{room.roomName}}</li>
     </ul>
+  
+    <div> 
+        <div> User: 
+            <div class="contents" ng-bind-html="home.displayChatUser"></div>
+        </div>
+        <div> Contents: 
+            <div class="contents" ng-bind-html="home.displayChatContents"></div>
+        </div> 
+        <div> Sent At: 
+            <div  class="contents" ng-bind-html="home.displayChatSentAt"></div>
+        </div>
+    </div>
+    
+    
 </section>
 
 <!-- Include an external template into the album view -->

@@ -30,7 +30,7 @@
     // any controller, service, or factory. Calls to these functions are going to be asynchronus calls and hence will take time before 
     // data is available in our controller.
     angular
-        .module('blocChat', ['ui.router', 'firebase', 'ui.bootstrap']) //UI Router module, UI Bootstrapp & firebase to our application.
+        .module('blocChat', ['ui.router', 'firebase', 'ui.bootstrap', 'ngSanitize']) //UI Router module, UI Bootstrapp & firebase to our application.
         .config(config);
 
 })();
