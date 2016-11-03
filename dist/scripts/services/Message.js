@@ -8,12 +8,8 @@
       getByRoomId: function (roomIdKey) {
         // Filter the messages by their room ID.
           firebase.database().ref().child('messages').orderByChild('roomID').equalTo(roomIdKey).once('value').then(function (snapshot){
-            //console.log(snapshot.val());
-              //for (var i=1; i<snapshot.val().length; i++) {
-              //    console.log(snapshot.val()[i].content);
-              //}
-              chatContents = snapshot.val();
-              console.log(chatContents);
+             chatContents = snapshot.val();
+             console.log(chatContents);
           });
           return chatContents;
       },

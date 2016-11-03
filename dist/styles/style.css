@@ -4,7 +4,7 @@ html {
 }
 
 .main-header {
-    background-color:darkgrey;
+    background-color: lightgray;
     display: table;
     color:black;
     position: relative;
@@ -12,7 +12,8 @@ html {
 }
 
 .room-list {
-  display: table-cell;    
+  display: table-cell; 
+    color:darkslategray;
 }
 
 .modal-body {
@@ -22,8 +23,24 @@ html {
 
 .btn {
     display:inline;
+    color:darkblue;
 }
 
-.contents {
-   display: inline;
+.header-cell {
+    display: table-cell;
+    position: relative;
+    width: 50%;
+}
+
+.user {
+    background-color: lightgrey;
+}
+
+.size {
+    font-size: 1rem;
+}
+
+.header-cell.room-cont {
+    padding-left: 4rem;
+    background-color: white;
 }
