@@ -54,7 +54,7 @@
                 //  return this.ChatRooms.createRoom;
                 //}
               }
-       });
+           });
       };       
           
       return ChatRooms;    

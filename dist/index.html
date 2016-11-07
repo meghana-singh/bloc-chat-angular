@@ -10,14 +10,37 @@
     
 </head>
 <body>
+    <section class="modal-username-initiate">
+    
+    <script type="text/ng-template" id="modalUsernameContent.html">
+        <div>
+            <div class="modal-header">
+                <h3 class="modal-title" id="modal-title">Set a Username</h3>
+            </div>
+            
+            <div class="modal-body" id="modal-body">
+                <input type="text" ng-model="modalUser.username">This name will appear when you need messages<br>
+            </div>
+            
+            <div class="modal-footer">
+                <button ng-click="modalUser.ok()">Set username</button>
+            </div>
+        </div>    
+    </script>
+    
+</section>
+    
     <a ui-sref="home">home</a>
     
     <ui-view></ui-view>
     
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
-     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-sanitize.js"></script>
+    
+    <!-- Angular Cookies Module -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-cookies.js"></script>
     
     <!-- Firebase -->
     <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
@@ -52,7 +75,7 @@
     <script src="/scripts/services/Message.js"></script>
     <script src="/scripts/controllers/HomeCtrl.js"></script>
     <script src="/scripts/controllers/ModalCtrl.js"></script>
-    
+    <script src="/scripts/controllers/ModalUserCtrl.js"></script>
     
 </body>
 </html>
