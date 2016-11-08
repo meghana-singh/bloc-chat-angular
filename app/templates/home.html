@@ -12,9 +12,9 @@
         <div ng-repeat="contents in home.chatContents">
             <div class="user"> <h4 ng-bind-html="contents.username"></h4></div>    
             <div ng-bind-html="contents.content"></div>
-            <div class="size" ng-bind-html="contents.sentAt"></div>
-            
+            <div class="size" ng-bind-html="contents.sentAt"></div>    
         </div>
+        <input type="text" ng-model="home.msgContents"> <button ng-click="home.sendChatContents()">Send</button> 
     </div>
     
     

@@ -1,9 +1,10 @@
 (function() {
-  function Message($firebaseArray) {
+  function Message($firebaseArray, $cookies) {
     var ref = firebase.database().ref().child("messages");
     var messages = $firebaseArray(ref);
           
     var Message = {};
+    var msgFirebaseObj = {};  
  /**
  * @function : getByRoomId
  * @desc     : This function retrieves data from firebase. 
@@ -17,11 +18,31 @@
     Message.getByRoomId = function (roomIdKey) {
          return firebase.database().ref().child('messages').orderByChild('roomID').equalTo(roomIdKey).once('value');        
     };
-        
+ 
+/**
+ * @function : send
+ * @desc     : This function adds chat messages to firebase database. 
+ *           : It creates messages object and adds the object to the messages.
+ * @param    : {number} roomIdKey
+ **/      
+    Message.send = function (roomIdKey, msgContents) {
+        msgFirebaseObj = {
+            content: msgContents,
+            roomID:  roomIdKey,
+            sentAt: Date(),
+            username: $cookies.get('blocChatCurrentUser')
+        };
+        messages.$add(msgFirebaseObj).then(function(ref){
+            var id = ref.key;
+            console.log("added record with id " + id);
+            messages.$indexFor(id); // returns location in the array
+        });
+    };  
+      
     return Message;
   }
     
   angular
     .module('blocChat')
-    .factory('Message', ['$firebaseArray', Message]);
+    .factory('Message', ['$firebaseArray', '$cookies', Message]);
 })();
