@@ -1,10 +1,37 @@
 (function() {
-  function Message($firebaseArray, $cookies) {
+  function Message($firebaseArray, $firebaseAuth, $cookies, Auth) {
     var ref = firebase.database().ref().child("messages");
     var messages = $firebaseArray(ref);
           
     var Message = {};
     var msgFirebaseObj = {};  
+      
+    Message.createUser = function(email, password) {
+      // Create a new user
+      return Auth.$createUserWithEmailAndPassword(email, password);
+    };
+
+    Message.signIn = function(email, password) {
+      // Create a new user
+      return Auth.$signInWithEmailAndPassword(email, password);
+    };
+      
+    Message.signOut = function() {
+      Auth.$signOut();  
+    };
+
+//    $scope.deleteUser = function() {
+//      $scope.message = null;
+//      $scope.error = null;
+//
+    //  // Delete the currently signed-in user
+    //  Auth.$deleteUser().then(function() {
+    //    $scope.message = "User deleted";
+    //  }).catch(function(error) {
+    //    $scope.error = error;
+    //  });
+    //};
+      
  /**
  * @function : getByRoomId
  * @desc     : This function retrieves data from firebase. 
@@ -30,7 +57,8 @@
             content: msgContents,
             roomID:  roomIdKey,
             sentAt: Date(),
-            username: $cookies.get('blocChatCurrentUser')
+            //username: $cookies.get('blocChatCurrentUser')
+            username: firebase.auth().currentUser.displayName
         };
         messages.$add(msgFirebaseObj).then(function(ref){
             var id = ref.key;
@@ -44,5 +72,5 @@
     
   angular
     .module('blocChat')
-    .factory('Message', ['$firebaseArray', '$cookies', Message]);
+    .factory('Message', ['$firebaseArray', '$firebaseAuth', '$cookies', 'Auth', Message]);
 })();

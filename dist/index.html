@@ -10,8 +10,11 @@
     
 </head>
 <body>
-    <section class="modal-username-initiate">
+    <h2><a ui-sref="beforeLogin">Bloc Chat</a></h2>
     
+<!--    
+    <section class="modal-username-initiate">
+
     <script type="text/ng-template" id="modalUsernameContent.html">
         <div>
             <div class="modal-header">
@@ -26,11 +29,14 @@
                 <button ng-click="modalUser.ok()">Set username</button>
             </div>
         </div>    
+
     </script>
-    
+
+        
 </section>
+-->
     
-    <a ui-sref="home">home</a>
+    
     
     <ui-view></ui-view>
     
@@ -50,12 +56,22 @@
     <script src="https://www.gstatic.com/firebasejs/3.5.0/firebase-messaging.js"></script>
     <script>
         // Initialize the Firebase SDK
-        var config = {
+        /*var config = {
           apiKey: '084285d3a06f06fc1861c51cbe2aab93ffbf3e09',
           authDomain: 'bloc-projects.firebaseapp.com',
           databaseURL: 'https://bloc-projects.firebaseio.com'
         };
-        firebase.initializeApp(config);
+        firebase.initializeApp(config);*/
+        
+        var config = {
+            apiKey: "AIzaSyC9jtY0EeGjS31-dvE0kFbZiUmVfjs5n-k",
+            authDomain: "bloc-projects.firebaseapp.com",
+            databaseURL: "https://bloc-projects.firebaseio.com",
+            storageBucket: "bloc-projects.appspot.com",
+            messagingSenderId: "432316834749"
+       };
+       firebase.initializeApp(config);
+
     </script>
     
     <!-- jQuery library -->
@@ -69,10 +85,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Latest compiled Angular UI Bootsrap JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.2.0/ui-bootstrap-tpls.min.js"></script>
-     
+    
+    
     <script src="/scripts/app.js"></script>
+    <script src="/scripts/services/Auth.js"></script>
     <script src="/scripts/services/ChatRooms.js"></script>
     <script src="/scripts/services/Message.js"></script>
+    <script src="/scripts/controllers/beforeLoginCtrl.js"></script>
     <script src="/scripts/controllers/HomeCtrl.js"></script>
     <script src="/scripts/controllers/ModalCtrl.js"></script>
     <script src="/scripts/controllers/ModalUserCtrl.js"></script>

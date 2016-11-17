@@ -22,8 +22,49 @@
              .state('home', {
                  url: '/home',
                  controller: 'HomeCtrl as home',
-                 templateUrl: '/templates/home.html'
-             });
+                 templateUrl: '/templates/home.html',
+                 resolve: {
+                      // controller will not be loaded until $requireSignIn resolves
+                      // Auth refers to our $firebaseAuth wrapper in the factory below
+                      "currentAuth": ['Auth', function(Auth) {
+                        // $requireSignIn returns a promise so the resolve waits for it to complete
+                          console.log("will be returning requireSignIn");
+                        return Auth.$requireSignIn();
+                      }]
+                 }
+             })
+          .state("beforeLogin", {
+              // the rest is the same for ui-router and ngRoute...
+              url:'/beforeLogin',
+              controller: 'beforeLoginCtrl as beforeLogin',
+              templateUrl: 'templates/beforeLogin.html',
+              resolve: {
+                // controller will not be loaded until $waitForSignIn resolves
+                // Auth refers to our $firebaseAuth wrapper in the factory below
+                "currentAuth": ['Auth', function(Auth) {
+                  // $waitForSignIn returns a promise so the resolve waits for it to complete
+                  // If the promise is rejected, it will throw a $stateChangeError (see above)
+                    console.log("will be returning waitForSignIn");
+                  return Auth.$waitForSignIn(); 
+                }]
+              }
+            });
+        
+    }
+
+    function authCheck($rootScope, $state) {
+        $rootScope.$on("$stateChangeError", function(event, toState, toParams, fromState, fromParams, error) {
+        // We can catch the error thrown when the $requireSignIn promise is rejected
+        // and redirect the user back to the home page
+        //console.log(error);    
+        if (error === "AUTH_REQUIRED") {
+          console.log("authCheck returned error: " + error);    
+          $state.go("beforeLogin");
+        } else {
+            console.log("authCheck did not return error " + error); 
+        //    $state.go("beforeLogin");
+        }
+      });
     }
 
 /**
@@ -57,7 +98,7 @@
            }); 
         }
     }
-
+    
     // By adding firebase to our app, $firebaseObject, $firebaseArray, and $firebaseAuth services are available to be injected into 
     // any controller, service, or factory. Calls to these functions are going to be asynchronus calls and hence will take time before 
     // data is available in our controller.
@@ -65,6 +106,7 @@
     angular
         .module('blocChat', ['ui.router', 'firebase', 'ui.bootstrap', 'ngSanitize', 'ngCookies']) 
         .config(config)
-        .run(['$cookies', '$document', '$uibModal', BlocChatCookies]);
+        //.run(['$cookies', '$document', '$uibModal', BlocChatCookies]);
+        .run(['$rootScope', '$state', authCheck]);
 
 })();

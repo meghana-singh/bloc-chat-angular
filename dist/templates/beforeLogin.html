@@ -1,0 +1,29 @@
+<div>
+       
+    <div ng-show="beforeLogin.firebaseUser">
+        
+        <p>Hello, {{ beforeLogin.firebaseUser.displayName }} <a ui-sref="home">Start chatting on BlocChat!!</a></p>        
+        <button ng-click="beforeLogin.signOut()">Sign Out</button>
+        <p ng-if="beforeLogin.createUserMsg"><strong>{{ beforeLogin.createUserMsg }}</strong></p>
+    </div>
+    <div ng-hide="beforeLogin.firebaseUser">
+        <p>Welcome, please sign in Or Create User.</p>
+        
+        Email: <input type="text" ng-model="beforeLogin.email">
+        Password: <input type="text" ng-model="beforeLogin.password">
+        DisplayName: <input type="text" ng-model="beforeLogin.displayName">
+        
+        <br><br>
+        <button ng-click="beforeLogin.signIn()">Sign In With email</button>
+        <button ng-click="beforeLogin.goCreateUser()">Create User</button>
+        <br><br>
+        
+        <!--<button ng-click="deleteUser()">Delete User</button>-->
+        <p ng-if="beforeLogin.createUserMsg"><strong>{{ beforeLogin.createUserMsg }}</strong></p>
+        <!--<p ng-if="error">Error: <strong>{{ error }}</strong></p>-->
+ 
+    </div>
+    <div ng-show="beforeLogin.succSignedIn">
+        <a ui-sref="home">Start Chatting on BlocChat!!</a>
+    </div>
+  </div>

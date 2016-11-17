@@ -44,3 +44,9 @@ html {
     padding-left: 4rem;
     background-color: white;
 }
+
+.login-page {
+    position: absolute;
+    right: 10%;
+    top:10%;
+}

@@ -3,7 +3,7 @@
 //It currently has one dependency injected into its dependency array - . The callback function is always the last item in the array.
 //The callback function of the controller is HomeCtrl
 (function(){
-    function HomeCtrl ($scope, ChatRooms, Message) {
+    function HomeCtrl ($scope, ChatRooms, Message, Auth) {
       
       this.chatRooms    = ChatRooms;
       this.roomName     = null;
@@ -11,7 +11,8 @@
       this.roomId       = null;
       this.getByRoomId  = Message.getByRoomId;
       this.send         = Message.send;
- 
+      
+        
 /**
  * @function : getPromiseAndAct
  * @desc     : Get the promise, once you get the promise "then" store the value returned by
@@ -41,8 +42,7 @@
           this.roomId   = roomId;
           //Store the reference for the controller's "this"
           var that = this;
-          this.getPromiseAndAct(that);
-          
+          this.getPromiseAndAct(that);          
       };
 
 /**
@@ -57,10 +57,12 @@
           this.msgContents = null;
           this.getPromiseAndAct(that);
      };
+        
+ 
           
 }
 
     angular
     .module('blocChat')
-    .controller('HomeCtrl', ['$scope', 'ChatRooms', 'Message', HomeCtrl]);
+    .controller('HomeCtrl', ['$scope', 'ChatRooms', 'Message', 'Auth', HomeCtrl]);
 })();
