@@ -20,7 +20,7 @@
 
          $stateProvider
              .state('home', {
-                 url: '/home',
+                 url: '/',
                  controller: 'HomeCtrl as home',
                  templateUrl: '/templates/home.html',
                  resolve: {
@@ -28,7 +28,7 @@
                       // Auth refers to our $firebaseAuth wrapper in the factory below
                       "currentAuth": ['Auth', function(Auth) {
                         // $requireSignIn returns a promise so the resolve waits for it to complete
-                          console.log("will be returning requireSignIn");
+                          console.log("requireSignIn resolved");
                         return Auth.$requireSignIn();
                       }]
                  }
@@ -44,8 +44,8 @@
                 "currentAuth": ['Auth', function(Auth) {
                   // $waitForSignIn returns a promise so the resolve waits for it to complete
                   // If the promise is rejected, it will throw a $stateChangeError (see above)
-                    console.log("will be returning waitForSignIn");
-                  return Auth.$waitForSignIn(); 
+                    console.log("waitForSignIn resolved");
+                    return Auth.$waitForSignIn(); 
                 }]
               }
             });
@@ -60,10 +60,7 @@
         if (error === "AUTH_REQUIRED") {
           console.log("authCheck returned error: " + error);    
           $state.go("beforeLogin");
-        } else {
-            console.log("authCheck did not return error " + error); 
-        //    $state.go("beforeLogin");
-        }
+        } 
       });
     }
 

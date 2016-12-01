@@ -1,21 +1,24 @@
 
-<section class="main-header">
-    <div class="header-cell">
-        <h2>Bloc Chat <button type="button" class="btn" ng-click="home.chatRooms.open()">New Room</button></h2>
-        <ul ng-repeat="room in home.chatRooms.all">
-            <!--<li class="room-list" ng-click="home.getChatContents(room.$id); home.roomName = room.roomName">{{room.roomName}}</li>-->
-            <li class="room-list" ng-click="home.getChatContents(room.$id, room)">{{room.roomName}}</li>
-        </ul>
-    </div>
-    <div class="header-cell room-cont">
-        <h4>{{home.roomName}} </h4>
-        <div ng-repeat="contents in home.chatContents">
-            <div class="user"> <h4 ng-bind-html="contents.username"></h4></div>    
-            <div ng-bind-html="contents.content"></div>
-            <div class="size" ng-bind-html="contents.sentAt"></div>    
+<section class="selling-points container clearfix">
+       <div class="column fourth">
+           <h2>Bloc Chat <button type="button" class="btn" ng-click="home.chatRooms.open()">New Room</button></h2>
+           <div ng-repeat="room in home.chatRooms.all">
+               <div ng-click="home.getChatContents(room.$id, room)"><h4><span ng-class="{'room-list': home.roomClicked.indexOf(room.$id) != -1}">{{room.roomName}}</span></h4></div>
+           </div>
+       </div>
+        <div class="column two-third chat-border">
+            <h3>{{home.roomName}} </h3>
+            <div ng-repeat="contents in home.chatContents">
+                <div class="user"> <h4 ng-bind-html="contents.username"></h4></div>    
+                <div ng-bind-html="contents.content"></div>
+                <div ng-bind-html="contents.sentAt"></div>    
+            </div>
+            
+            <div class="form-group">
+                <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="home.msgContents"></textarea>
+            </div>
+                <button class="btn-success" type="submit" ng-click="home.sendChatContents()">Send</button>             
         </div>
-        <input type="text" ng-model="home.msgContents"> <button ng-click="home.sendChatContents()">Send</button> 
-    </div>
     
     
 </section>
@@ -40,7 +43,3 @@
     </script>
     
 </section>
-
-<div class=login-page> 
-    <a ui-sref="beforeLogin">Login Page</a>
-</div>

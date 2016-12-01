@@ -19,19 +19,21 @@
     Message.signOut = function() {
       Auth.$signOut();  
     };
-
-//    $scope.deleteUser = function() {
-//      $scope.message = null;
-//      $scope.error = null;
-//
-    //  // Delete the currently signed-in user
-    //  Auth.$deleteUser().then(function() {
-    //    $scope.message = "User deleted";
-    //  }).catch(function(error) {
-    //    $scope.error = error;
-    //  });
-    //};
       
+    firebase.auth().onAuthStateChanged(function(user) {
+      if (user) {
+        // User is signed in.
+        //  $state.go("home");
+          console.log("User is signed in" + user.email)  ;
+          console.log("User is signed in" + user.uid)  ;     
+          console.log("User is signed in" + user.displayName)  ;     
+      } else {
+        // No user is signed in.
+          console.log("No User is signed in")  ;
+      }
+    });
+    
+
  /**
  * @function : getByRoomId
  * @desc     : This function retrieves data from firebase. 

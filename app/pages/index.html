@@ -10,33 +10,17 @@
     
 </head>
 <body>
-    <h2><a ui-sref="beforeLogin">Bloc Chat</a></h2>
-    
-<!--    
-    <section class="modal-username-initiate">
+    <!-- navigation Bar -->
+    <nav class="navbar">
+        <a ui-sref="home" class="logo">
+             <img src="assets/images/bloc_chat_logo.png" alt="bloc chat logo">
+        </a>
+        <div class="links-container">
+            <a ui-sref="beforeLogin" class="navbar-link">Login</a>
+        </div>
+    </nav>
 
-    <script type="text/ng-template" id="modalUsernameContent.html">
-        <div>
-            <div class="modal-header">
-                <h3 class="modal-title" id="modal-title">Set a Username</h3>
-            </div>
-            
-            <div class="modal-body" id="modal-body">
-                <input type="text" ng-model="modalUser.username">This name will appear when you need messages<br>
-            </div>
-            
-            <div class="modal-footer">
-                <button ng-click="modalUser.ok()">Set username</button>
-            </div>
-        </div>    
-
-    </script>
-
-        
-</section>
--->
-    
-    
+     
     
     <ui-view></ui-view>
     

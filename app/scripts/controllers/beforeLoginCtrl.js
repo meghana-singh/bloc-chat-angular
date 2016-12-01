@@ -3,7 +3,7 @@
 //It currently has one dependency injected into its dependency array - . The callback function is always the last item in the array.
 //The callback function of the controller is HomeCtrl
 (function(){
-    function beforeLoginCtrl ($scope, ChatRooms, Message, Auth, currentAuth) {  
+    function beforeLoginCtrl ($scope, ChatRooms, Message, Auth, currentAuth, $state) {  
         this.createUserMsg = null;
         this.createUserErr = null;
         this.email         = null;
@@ -28,9 +28,9 @@
             }, function(error) {
               // An error happened.     
           });
+          $state.go("home");
         }).catch(function(error) {
-           that.createUserErr = error;
-           that.createUserMsg = "Oops! Unable to create account, so try again " + that.displayName;
+           that.createUserMsg = that.displayName + ", " + error.message;
         });
     };
 
@@ -38,40 +38,28 @@
         var that = this;
         
         Message.signIn(this.email, this.password).then(function(user){
-         that.createUserMsg = "Signed in as: " + user.displayName;
+         that.createUserMsg = "Signed in as " + user.displayName;
          that.succSignedIn  = true;
+         $state.go("home");    
         }).catch(function(error){
-           that.createUserMsg = "Oops! Try again!"; 
+            that.createUserMsg = that.displayName + ", " + error.message;
         });
     }
     
     this.signOut = function () {
-        var that = this;
         Message.signOut();
-        that.createUserMsg = "Signed Out";
-        
+        this.createUserMsg = "Signed Out";
+        this.firebaseUser = null;
     }
     
      this.deleteUser = function () {
          console.log("yet to implement");
      };
         
-    firebase.auth().onAuthStateChanged(function(user) {
-        //this.firebaseUser = user || currentAuth;
-      if (user) {
-        // User is signed in.
-          console.log("User is signed in" + user.email)  ;
-          console.log("User is signed in" + user.uid)  ;     
-          console.log("User is signed in" + user.displayName)  ;     
-      } else {
-        // No user is signed in.
-          console.log("No User is signed in")  ;
-      }
-    });
         
    }
     
  angular
     .module('blocChat')
-    .controller('beforeLoginCtrl', ['$scope', 'ChatRooms', 'Message', 'Auth', 'currentAuth', beforeLoginCtrl]);
+    .controller('beforeLoginCtrl', ['$scope', 'ChatRooms', 'Message', 'Auth', 'currentAuth', '$state', beforeLoginCtrl]);
 })();

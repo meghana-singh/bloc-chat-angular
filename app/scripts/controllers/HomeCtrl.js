@@ -11,7 +11,7 @@
       this.roomId       = null;
       this.getByRoomId  = Message.getByRoomId;
       this.send         = Message.send;
-      
+      this.roomClicked  = [];
         
 /**
  * @function : getPromiseAndAct
@@ -34,6 +34,7 @@
  * @desc     : This function updates the roomName with the active room. 
  *           : It calls the service message.getRoomId() to get the 
  *           : data(messages related to the active room) from firebase.
+ *           : roomClicked[] array holds the roomId which is currently active.
  * @param    : {number, object} roomIdKey, room
  *  
  **/        
@@ -42,7 +43,9 @@
           this.roomId   = roomId;
           //Store the reference for the controller's "this"
           var that = this;
-          this.getPromiseAndAct(that);          
+          this.getPromiseAndAct(that);  
+          this.roomClicked = [];
+          this.roomClicked.push(roomId);
       };
 
 /**

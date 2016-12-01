@@ -1,29 +1,44 @@
 <div>
        
-    <div ng-show="beforeLogin.firebaseUser">
-        
-        <p>Hello, {{ beforeLogin.firebaseUser.displayName }} <a ui-sref="home">Start chatting on BlocChat!!</a></p>        
-        <button ng-click="beforeLogin.signOut()">Sign Out</button>
+    <div ng-show="beforeLogin.firebaseUser">        
+        <h3>Hello, {{ beforeLogin.firebaseUser.displayName }}</h3>        
+        <div class="col-sm-10">
+        <button type="submit" ng-click="beforeLogin.signOut()" class="btn btn-success">Sign Out</button>
         <p ng-if="beforeLogin.createUserMsg"><strong>{{ beforeLogin.createUserMsg }}</strong></p>
+        </div>
     </div>
+
     <div ng-hide="beforeLogin.firebaseUser">
-        <p>Welcome, please sign in Or Create User.</p>
+        <h3>Welcome, please sign in Or Create User.</h3>
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label for="inputName3" class="col-sm-2 control-label">Name</label>
+            <div class="col-sm-4">
+              <input class="form-control" id="inputName3" placeholder="Name" ng-model="beforeLogin.displayName">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+            <div class="col-sm-4">
+              <input class="form-control" id="inputEmail3" placeholder="Email" ng-model="beforeLogin.email">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+            <div class="col-sm-4">
+              <input type="password" class="form-control" id="inputPassword3" placeholder="Password" ng-model="beforeLogin.password">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit" ng-click="beforeLogin.signIn()" class="btn btn-success">Sign In</button>
+              <button type="submit" ng-click="beforeLogin.goCreateUser()" class="btn btn-success">Create Account</button>
+            </div>
+          </div>
+        </form>
         
-        Email: <input type="text" ng-model="beforeLogin.email">
-        Password: <input type="text" ng-model="beforeLogin.password">
-        DisplayName: <input type="text" ng-model="beforeLogin.displayName">
-        
-        <br><br>
-        <button ng-click="beforeLogin.signIn()">Sign In With email</button>
-        <button ng-click="beforeLogin.goCreateUser()">Create User</button>
-        <br><br>
-        
-        <!--<button ng-click="deleteUser()">Delete User</button>-->
-        <p ng-if="beforeLogin.createUserMsg"><strong>{{ beforeLogin.createUserMsg }}</strong></p>
-        <!--<p ng-if="error">Error: <strong>{{ error }}</strong></p>-->
- 
+        <h3 ng-if="beforeLogin.createUserMsg"><strong>{{ beforeLogin.createUserMsg }}</strong></h3>
+         
     </div>
-    <div ng-show="beforeLogin.succSignedIn">
-        <a ui-sref="home">Start Chatting on BlocChat!!</a>
-    </div>
+    
   </div>

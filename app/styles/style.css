@@ -1,20 +1,139 @@
+*, *::before, *::after {
+     -moz-box-sizing: border-box;
+     -webkit-box-sizing: border-box;
+     box-sizing: border-box;
+ }
+
 html {
      height: 100%; /* makes sure our HTML takes up 100% of the browser window */
      font-size: 100%;
+ }
+
+ /* Medium screens (640px) */
+ /* min-width is the querie/constraine. 640px is the breakpoint for a laptop. Breakpoint refers to the measurement of a devices screen width. */
+ /* rem is usually 16px for most of the browsers. Set the font size to be more than 112% of rem-16px. */
+
+ @media (min-width: 640px) {
+     html { font-size: 112%; }
+
+     .column {
+         float: left;
+         padding-left: 1rem;
+         padding-right: 1rem;
+         
+     }
+
+     .column.full {width:100%;}
+     .column.two-thirds {width:66.7%; }
+     .column.half {width:50%;}
+     .column.third {width:33.3%;}
+     .column.fourth {width:25%;}
+     .column.seventy {width:75%;}
+     .column.flow-opposite {float:right;}
+
+ }
+
+
+ /* Large screens (1024px) */
+ /* rem is usually 16px for most of the browsers. Set the font size to be more than 120% of rem-16px. */
+
+ @media (min-width: 1024px) {
+     html { font-size: 120%; }
+ }
+
+.clearfix::before,
+.clearfix::after {
+   content: " ";
+   display: table;
 }
 
-.main-header {
-    background-color: lightgray;
-    display: table;
-    color:black;
+.clearfix::after {
+   clear: both;
+}
+
+body {
+    /* background-image: url(../assets/images/blurred_backgrounds/blur_bg_3.jpg);*/
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-position: center center;
+     background-size: cover;
+     font-family: 'Open Sans'; /* sets our font to the "Open Sans" typeface */
+     color: palegoldenrod;             /* sets the text color to white */
+     min-height: 100%;         /* says the height of the body must be, at minimum, 100% of the window */
+     padding-bottom: 200px;
+ }
+
+
+.navbar {
     position: relative;
-    padding: 2rem;
+    padding: 0.5rem;
+    /*background-color: rgba(101,18,95,0.5);*/
+    background-color: purple;
+}
+
+.navbar .logo {
+    position: relative; /* positioning will be explained in a resource */
+    left: 2rem;
+    cursor: pointer; /* produces finger pointer when cursor is hovered on the logo. */
+    z-index: 1;
+}
+
+.navbar .links-container {
+    display: table;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100px;
+    color: white;
+    text-decoration: none;
+}
+
+   /* #5 */
+.links-container .navbar-link:hover {
+   /* color: rgb(233,50,117);*/
+    color: black;
+}
+
+.links-container:active {
+    background-color: white;
 }
 
 .room-list {
-  display: table-cell; 
-    color:darkslategray;
+    background-color: lightgrey;
 }
+
+.links-container .navbar-link {
+    display: table-cell;
+    position: relative;
+    height: 100%;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    /* #4 */
+    vertical-align: middle;
+    color: white;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    /* #3 */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+.container {
+  /*  margin: 0 auto; */    /* Using auto will set the left & right margins to center the content */
+    /*max-width: 64rem; */  /* Set the max width of the selling container to 64rem so that the data will not stretch too much on large screens */
+}
+
+.container.narrow {
+     max-width: 56rem;;
+ }
+
+.selling-points {
+     position: relative;
+}
+
 
 .modal-body {
     background-color:lightgrey;
@@ -24,29 +143,16 @@ html {
 .btn {
     display:inline;
     color:darkblue;
-}
-
-.header-cell {
-    display: table-cell;
-    position: relative;
-    width: 50%;
+    
 }
 
 .user {
     background-color: lightgrey;
+    
 }
 
-.size {
-    font-size: 1rem;
-}
-
-.header-cell.room-cont {
-    padding-left: 4rem;
-    background-color: white;
-}
-
-.login-page {
-    position: absolute;
-    right: 10%;
-    top:10%;
+.chat-border {
+    border-left-width:thick;
+    border-left-style: solid;
+    border-left-color: gray;
 }
