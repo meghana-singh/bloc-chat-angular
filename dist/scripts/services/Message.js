@@ -41,11 +41,11 @@
  *           : This function is called when we want to display the contents of a 
  *           : chat room.
  * @param    : {number} roomIdKey
- * @return   : {Object} promise
+ * @return   : {Object} returns the firebase array reference - so data can be realtime updated.
  **/
      
     Message.getByRoomId = function (roomIdKey) {
-         return firebase.database().ref().child('messages').orderByChild('roomID').equalTo(roomIdKey).once('value');        
+         return $firebaseArray(firebase.database().ref().child('messages').orderByChild('roomID').equalTo(roomIdKey));//.once('value');        
     };
  
 /**

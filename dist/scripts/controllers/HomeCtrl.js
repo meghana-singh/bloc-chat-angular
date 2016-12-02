@@ -12,7 +12,7 @@
       this.getByRoomId  = Message.getByRoomId;
       this.send         = Message.send;
       this.roomClicked  = [];
-        
+          
 /**
  * @function : getPromiseAndAct
  * @desc     : Get the promise, once you get the promise "then" store the value returned by
@@ -22,11 +22,14 @@
  *  
  **/    
      this.getPromiseAndAct = function(that) {
-        this.getByRoomId(this.roomId).then(function(promiseValue) {
-          that.chatContents = promiseValue.val();
-          console.log(that.chatContents);
-          $scope.$apply();
-        });    
+         that.chatContents = this.getByRoomId(this.roomId);
+         console.log(that.chatContents);
+         //$scope.$apply();
+        //this.getByRoomId(this.roomId).then(function(promiseValue) {
+        //  that.chatContents = promiseValue.val();
+        //  console.log(that.chatContents);
+        //  $scope.$apply();
+        //});    
       };
           
 /**

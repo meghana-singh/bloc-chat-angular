@@ -9,9 +9,9 @@
         <div class="column two-third chat-border">
             <h3>{{home.roomName}} </h3>
             <div ng-repeat="contents in home.chatContents">
-                <div class="user"> <h4 ng-bind-html="contents.username"></h4></div>    
-                <div ng-bind-html="contents.content"></div>
-                <div ng-bind-html="contents.sentAt"></div>    
+                <div class="user"> <h4> {{contents.username}}</h4></div>    
+                <div> {{contents.content}}</div>
+                <div> {{contents.sentAt}}</div>    
             </div>
             
             <div class="form-group">
