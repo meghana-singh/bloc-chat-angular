@@ -156,3 +156,8 @@ body {
     border-left-style: solid;
     border-left-color: gray;
 }
+
+#user-name {
+    color: purple;
+    background-color: lightgray;
+}

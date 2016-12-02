@@ -69,6 +69,10 @@
         });
     };  
       
+      Message.getUserDisplayName = function () {
+          return firebase.auth().currentUser.displayName;
+      };
+      
     return Message;
   }
     

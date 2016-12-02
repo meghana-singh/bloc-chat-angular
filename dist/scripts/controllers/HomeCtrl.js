@@ -12,6 +12,7 @@
       this.getByRoomId  = Message.getByRoomId;
       this.send         = Message.send;
       this.roomClicked  = [];
+      this.getUserDisplayName = Message.getUserDisplayName();
           
 /**
  * @function : getPromiseAndAct
@@ -23,6 +24,7 @@
  **/    
      this.getPromiseAndAct = function(that) {
          that.chatContents = this.getByRoomId(this.roomId);
+         
          console.log(that.chatContents);
          //$scope.$apply();
         //this.getByRoomId(this.roomId).then(function(promiseValue) {

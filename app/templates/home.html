@@ -2,6 +2,7 @@
 <section class="selling-points container clearfix">
        <div class="column fourth">
            <h2>Bloc Chat <button type="button" class="btn" ng-click="home.chatRooms.open()">New Room</button></h2>
+           <h4 id="user-name" >{{home.getUserDisplayName}}</h4>
            <div ng-repeat="room in home.chatRooms.all">
                <div ng-click="home.getChatContents(room.$id, room)"><h4><span ng-class="{'room-list': home.roomClicked.indexOf(room.$id) != -1}">{{room.roomName}}</span></h4></div>
            </div>
