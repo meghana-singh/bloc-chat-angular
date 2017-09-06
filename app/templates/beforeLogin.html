@@ -1,11 +1,19 @@
 <div>
        
-    <div ng-show="beforeLogin.firebaseUser">        
-        <h3>Hello, {{ beforeLogin.firebaseUser.displayName }}</h3>        
-        <div class="col-sm-10">
-        <button type="submit" ng-click="beforeLogin.signOut()" class="btn btn-success">Sign Out</button>
-        <p ng-if="beforeLogin.createUserMsg"><strong>{{ beforeLogin.createUserMsg }}</strong></p>
+    <div ng-show="beforeLogin.firebaseUser" class="row">        
+        <div class="col-sm-2"></div>
+        <div class="col-sm-6">
+          <h4>Hi {{ beforeLogin.firebaseUser.displayName }},</h4>
+	  <h4>Features are getting added to BlocChat. 
+	  <ul>
+	    <li> Soon you will be able to see if other chat room participant is online.</li>
+	    <li> You will be able to see if other user is typing a message in your current chat room</li>
+	  </ul>
+          <button type="submit" ng-click="beforeLogin.signOut()" class="btn btn-success">Sign Out</button>
+          <button type="submit" <a ui-sref="home" class="btn btn-info">Back</button>
+          <p ng-if="beforeLogin.createUserMsg"><strong>{{ beforeLogin.createUserMsg }}</strong></p>
         </div>
+        <div class="col-sm-2"></div>
     </div>
 
     <div ng-hide="beforeLogin.firebaseUser">
@@ -37,7 +45,7 @@
           </div>
         </form>
         
-        <h3 ng-if="beforeLogin.createUserMsg"><strong>{{ beforeLogin.createUserMsg }}</strong></h3>
+        <h4 ng-if="beforeLogin.createUserMsg"><strong>{{ beforeLogin.createUserMsg }}</strong></h4>
          
     </div>
     

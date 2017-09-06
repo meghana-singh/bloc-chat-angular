@@ -122,8 +122,10 @@ body {
 
 
 .container {
-  /*  margin: 0 auto; */    /* Using auto will set the left & right margins to center the content */
-    /*max-width: 64rem; */  /* Set the max width of the selling container to 64rem so that the data will not stretch too much on large screens */
+    /*margin: 0 auto; */    /* Using auto will set the left & right margins to center the content */
+/*    max-width: 64rem;   *//* Set the max width of the selling container to 64rem so that the data will not stretch too much on large screens */
+
+    border: thick solid gray;
 }
 
 .container.narrow {
@@ -140,6 +142,10 @@ body {
     color: black;
 }
 
+#modal-title {
+    padding-left: 20rem;
+}
+
 .btn {
     display:inline;
     color:darkblue;
@@ -151,10 +157,11 @@ body {
     
 }
 
-.chat-border {
-    border-left-width:thick;
-    border-left-style: solid;
-    border-left-color: gray;
+.chatroom-border {
+    border-right  : thick solid gray;
+    padding-left  : 1rem;
+    padding-right : 1rem;
+    padding-bottom: 1rem;
 }
 
 #user-name {

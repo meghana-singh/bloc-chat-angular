@@ -1,28 +1,32 @@
 
-<section class="selling-points container clearfix">
-       <div class="column fourth">
+<!--<section class="selling-points container clearfix">-->
+<div class="row">
+       <div class="col-md-4">
+         <div class="chatroom-border">
            <h2>Bloc Chat <button type="button" class="btn" ng-click="home.chatRooms.open()">New Room</button></h2>
            <h4 id="user-name" >{{home.getUserDisplayName}}</h4>
            <div ng-repeat="room in home.chatRooms.all">
-               <div ng-click="home.getChatContents(room.$id, room)"><h4><span ng-class="{'room-list': home.roomClicked.indexOf(room.$id) != -1}">{{room.roomName}}</span></h4></div>
+             <div ng-click="home.getChatContents(room.$id, room)"><h4><span ng-class="{'room-list': home.roomClicked.indexOf(room.$id) != -1}">{{room.roomName}}</span></h4></div>
            </div>
+         </div>   
        </div>
-        <div class="column two-third chat-border">
-            <h3>{{home.roomName}} </h3>
-            <div ng-repeat="contents in home.chatContents">
-                <div class="user"> <h4> {{contents.username}}</h4></div>    
-                <div> {{contents.content}}</div>
-                <div> {{contents.sentAt}}</div>    
-            </div>
-            
-            <div class="form-group">
-                <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="home.msgContents"></textarea>
-            </div>
-                <button class="btn-success" type="submit" ng-click="home.sendChatContents()">Send</button>             
-        </div>
+        <!--<div class="column seventy ">-->
+       <div class="col-md-8">
+         <div class="chatroom-border">
+           <h3>{{home.roomName}} </h3>
+             <div ng-repeat="contents in home.chatContents">
+               <div class="user"> <h4> {{contents.username}}</h4></div>    
+               <div> {{contents.content}}</div>
+               <div> {{contents.sentAt}}</div>    
+             </div>
+             <div class="form-group">
+               <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="home.msgContents" placeholder="Message {{home.roomName}}"></textarea>
+             </div>
+             <button class="btn-success" type="submit" ng-click="home.sendChatContents()">Send</button>             
+         </div>   
+       </div>
     
-    
-</section>
+</div>
 
 <section class="modal-initiate">
     
