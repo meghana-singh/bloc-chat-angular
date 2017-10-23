@@ -164,6 +164,15 @@ body {
     padding-bottom: 1rem;
 }
 
+.message_to_user {
+    color      : red;
+    text-align : center;
+}
+
+.center-the-text {
+    text-align : center;
+}
+
 #user-name {
     color: purple;
     background-color: lightgray;

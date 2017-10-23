@@ -17,7 +17,9 @@
     </div>
 
     <div ng-hide="beforeLogin.firebaseUser">
-        <h3>Welcome, please sign in Or Create User.</h3>
+        <h3 class="center-the-text">Welcome, Please Sign-in Or Create User.</h3>
+
+
         <form class="form-horizontal" role="form">
           <div class="form-group">
             <label for="inputName3" class="col-sm-2 control-label">Name</label>
@@ -45,7 +47,7 @@
           </div>
         </form>
         
-        <h4 ng-if="beforeLogin.createUserMsg"><strong>{{ beforeLogin.createUserMsg }}</strong></h4>
+        <p class="message_to_user" ng-if="beforeLogin.createUserMsg">{{ beforeLogin.createUserMsg }}</p>
          
     </div>
     
